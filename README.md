@@ -1,14 +1,18 @@
-# Product Management SPA
+# Generic Business System
 
-An example product management single-page-application
+This is a template for an existing (non-SSI) business system. 
 
-![screenshot](./screenshot.png)
+The intention is to fork this as a template to quickly build PoC business systems, then work in integrating them with the SSI API layer. 
+
+This is forked from some sample code I wrote earlier: https://github.com/dwjohnston/product-management-SPA
+
+
 
 ## Tech Stack
 
 - React/Redux/Redux-Saga/Material UI on the frontend
-- Express db backend
-- Dynamo DB (AWS) local database
+- Express backend
+- ~~Dynamo DB (AWS) local database~~ Replace with GCP Datastore
 
 ## Functionality not included: 
 
