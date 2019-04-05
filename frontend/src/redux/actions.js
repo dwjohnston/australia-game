@@ -1,53 +1,53 @@
-export const FETCH_ALL_PRODUCTS_BASE =
-    'FETCH_ALL_PRODUCTS_BASE';
-export const FETCH_ALL_PRODUCTS_REQUEST =
-    'FETCH_ALL_PRODUCTS_REQUEST';
-export const FETCH_ALL_PRODUCTS_SUCCESS =
-    'FETCH_ALL_PRODUCTS_SUCCESS';
-export const FETCH_ALL_PRODUCTS_FAILURE =
-    'FETCH_ALL_PRODUCTS_FAILURE';
-export const FETCH_ALL_PRODUCTS_CLEAR =
-    'FETCH_ALL_PRODUCTS_CLEAR';
+export const FETCH_ALL_STUDENTS_BASE =
+    'FETCH_ALL_STUDENTS_BASE';
+export const FETCH_ALL_STUDENTS_REQUEST =
+    'FETCH_ALL_STUDENTS_REQUEST';
+export const FETCH_ALL_STUDENTS_SUCCESS =
+    'FETCH_ALL_STUDENTS_SUCCESS';
+export const FETCH_ALL_STUDENTS_FAILURE =
+    'FETCH_ALL_STUDENTS_FAILURE';
+export const FETCH_ALL_STUDENTS_CLEAR =
+    'FETCH_ALL_STUDENTS_CLEAR';
 
-export function requestFetchAllProducts() {
+export function requestFetchAllStudents() {
     return {
-        type: FETCH_ALL_PRODUCTS_REQUEST,
+        type: FETCH_ALL_STUDENTS_REQUEST,
         payload: null
     }
 }
 
-export const UPDATE_PRODUCT_BASE =
-    'UPDATE_PRODUCT_BASE';
-export const UPDATE_PRODUCT_REQUEST =
-    'UPDATE_PRODUCT_REQUEST';
-export const UPDATE_PRODUCT_SUCCESS =
-    'UPDATE_PRODUCT_SUCCESS';
-export const UPDATE_PRODUCT_FAILURE =
-    'UPDATE_PRODUCT_FAILURE';
-export const UPDATE_PRODUCT_CLEAR =
-    'UPDATE_PRODUCT_CLEAR';
+export const UPDATE_STUDENT_BASE =
+    'UPDATE_STUDENT_BASE';
+export const UPDATE_STUDENT_REQUEST =
+    'UPDATE_STUDENT_REQUEST';
+export const UPDATE_STUDENT_SUCCESS =
+    'UPDATE_STUDENT_SUCCESS';
+export const UPDATE_STUDENT_FAILURE =
+    'UPDATE_STUDENT_FAILURE';
+export const UPDATE_STUDENT_CLEAR =
+    'UPDATE_STUDENT_CLEAR';
 
-export function requestUpdateProduct(productData) {
+export function requestUpdateStudent(studentData) {
     return {
-        type: UPDATE_PRODUCT_REQUEST,
-        payload: productData,
+        type: UPDATE_STUDENT_REQUEST,
+        payload: studentData,
     }
 }
 
-export const DELETE_PRODUCT_BASE =
-    'DELETE_PRODUCT_BASE';
-export const DELETE_PRODUCT_REQUEST =
-    'DELETE_PRODUCT_REQUEST';
-export const DELETE_PRODUCT_SUCCESS =
-    'DELETE_PRODUCT_SUCCESS';
-export const DELETE_PRODUCT_FAILURE =
-    'QUIZE_FETCH_FAILURE';
-export const DELETE_PRODUCT_CLEAR =
-    'DELETE_PRODUCT_CLEAR';
-export function requestDeleteProduct(product) {
+export const DELETE_STUDENT_BASE =
+    'DELETE_STUDENT_BASE';
+export const DELETE_STUDENT_REQUEST =
+    'DELETE_STUDENT_REQUEST';
+export const DELETE_STUDENT_SUCCESS =
+    'DELETE_STUDENT_SUCCESS';
+export const DELETE_STUDENT_FAILURE =
+    'DELETE_STUDENT_FAILURE';
+export const DELETE_STUDENT_CLEAR =
+    'DELETE_STUDENT_CLEAR';
+export function requestDeleteStudent(student) {
     return {
-        type: DELETE_PRODUCT_REQUEST,
-        payload: product,
+        type: DELETE_STUDENT_REQUEST,
+        payload: student,
     }
 }
 
@@ -69,20 +69,3 @@ export function requestClearErrors() {
     }
 }
 
-
-export const FETCH_CURRENCY_RATE_BASE =
-    'FETCH_CURRENCY_RATE_BASE';
-export const FETCH_CURRENCY_RATE_REQUEST =
-    'FETCH_CURRENCY_RATE_REQUEST';
-export const FETCH_CURRENCY_RATE_SUCCESS =
-    'FETCH_CURRENCY_RATE_SUCCESS';
-export const FETCH_CURRENCY_RATE_FAILURE =
-    'FETCH_CURRENCY_RATE_FAILURE';
-export const FETCH_CURRENCY_RATE_CLEAR =
-    'FETCH_CURRENCY_RATE_CLEAR';
-
-export function requestFetchCurrencyRate() {
-    return {
-        type: FETCH_CURRENCY_RATE_REQUEST
-    }
-}

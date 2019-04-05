@@ -5,11 +5,10 @@ import { connect } from 'react-redux';
 import ButtonGroup from '../generic/ButtonGroup';
 import { Link } from "react-router-dom";
 import * as Routes from "../../routes/routes";
-import { selectAllProducts, selectCurrencyRate } from '../../redux/selectors';
-import { requestDeleteProduct } from "../../redux/actions";
+import { selectAllStudents } from '../../redux/selectors';
+import { requestDeleteStudent } from "../../redux/actions";
 import Button from "../generic/Button";
 import ControlPanel from './ControlPanel';
-import { convertCurrency, formatCurrency } from '../../util/convertCurrency';
 const useStyles = makeStyles({
     root: {
 
@@ -20,49 +19,40 @@ const useStyles = makeStyles({
     }
 });
 
-function ProductTable({ products, deleteProduct, currencyRate }) {
+function StudentTable({ students, deleteStudent, currencyRate }) {
     const classes = useStyles();
-
-    const [useAud, updateUseAud] = useState(false);
 
     return (
         <section>
             <ControlPanel
-                useAud={useAud}
-                updateUseAud={updateUseAud}
-                disabled={!currencyRate}
+  
             />
             <Table className={classes.root}>
                 <TableHead>
                     <TableRow>
-                        <TableCell>Product ID</TableCell>
-                        <TableCell>Product Name</TableCell>
-                        <TableCell className={classes.currencyColumn}>
-                            {useAud ? `Value (AUD)` : `Value (USD)`}
-                        </TableCell>
+                        <TableCell>Student ID</TableCell>
+                        <TableCell>Student Name</TableCell>
+                        <TableCell>Grade</TableCell>
                         <TableCell>Action</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {products && products.map((product, i) => {
+                    {students && students.map((student, i) => {
                         return (<TableRow
-                            key={product.id}
+                            key={student.id}
                         >
-                            <TableCell>{product.id}</TableCell>
-                            <TableCell>{product.name}</TableCell>
-                            <TableCell className={classes.currencyColumn}>{formatCurrency(
-                                useAud ? convertCurrency(product.priceUsd, currencyRate)
-                                    : product.priceUsd
-                            )}</TableCell>
+                            <TableCell>{student.id}</TableCell>
+                            <TableCell>{student.name}</TableCell>
+                            <TableCell>{student.grade}</TableCell>
                             <TableCell>
                                 <ButtonGroup>
                                     <Button
                                         component={Link}
-                                        to={`${Routes.UPDATE_PRODUCT}/${product.id}`}
+                                        to={`${Routes.UPDATE_STUDENT}/${student.id}`}
                                         color="primary"
                                     >Update</Button>
                                     <Button
-                                        onClick={() => deleteProduct(product)}
+                                        onClick={() => deleteStudent(student)}
                                         color="secondary"
                                     >Delete</Button>
                                 </ButtonGroup>
@@ -85,17 +75,16 @@ const mapStateToProps = (
     ownProps
 ) => {
     return {
-        products: selectAllProducts(state),
-        currencyRate: selectCurrencyRate(state),
+        students: selectAllStudents(state),
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        deleteProduct: (product) => dispatch(requestDeleteProduct(product))
+        deleteStudent: (student) => dispatch(requestDeleteStudent(student))
     };
 };
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(ProductTable); 
+)(StudentTable); 

@@ -1,4 +1,4 @@
-export function createEmptyProduct() {
+export function createEmptyStudent() {
     return {
         id: "",
         name: "",
@@ -7,15 +7,15 @@ export function createEmptyProduct() {
 }
 
 export function isUpdateLoading(state) {
-    return state.loadingFlags.productUpdate;
+    return state.loadingFlags.studentUpdate;
 }
 
-export function selectAllProducts(state) {
-    return Object.values(state.products)
+export function selectAllStudents(state) {
+    return Object.values(state.students)
 }
 
-export function selectProductByProductId(state, id) {
-    return state.products[id];
+export function selectStudentByStudentId(state, id) {
+    return state.students[id];
 }
 
 export function selectErrors(state) {

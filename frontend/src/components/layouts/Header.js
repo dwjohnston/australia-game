@@ -7,13 +7,13 @@ const useStyles = makeStyles({
     },
 });
 
-export default function ProductEditFormLayout({ children }) {
+export default function StudentEditFormLayout({ children }) {
     const classes = useStyles();
     return <header className={classes.root}>
         <Typography
             variant="h1"
             align="center"
             gutterBottom
-        >Acme Product Mangement Tool</Typography>
+        >Acme Student Mangement Tool</Typography>
     </header>;
 }

@@ -1,25 +1,25 @@
 import { combineReducers } from "redux";
-import { FETCH_ALL_PRODUCTS_SUCCESS, UPDATE_PRODUCT_REQUEST, UPDATE_PRODUCT_FAILURE, UPDATE_PRODUCT_SUCCESS, DELETE_PRODUCT_SUCCESS, CLEAR_ERRORS_REQUEST, CLEAR_ERRORS_SUCCESS, FETCH_CURRENCY_RATE_SUCCESS } from "./actions";
+import { FETCH_ALL_STUDENTS_SUCCESS, UPDATE_STUDENT_REQUEST, UPDATE_STUDENT_FAILURE, UPDATE_STUDENT_SUCCESS, DELETE_STUDENT_SUCCESS, CLEAR_ERRORS_REQUEST, CLEAR_ERRORS_SUCCESS, FETCH_CURRENCY_RATE_SUCCESS } from "./actions";
 
 
 const initialState = {};
-export function productsReducer(state = initialState, action) {
+export function studentsReducer(state = initialState, action) {
     const { type, payload } = action;
 
     switch (type) {
-        case FETCH_ALL_PRODUCTS_SUCCESS: {
-            //Index products by product id. 
+        case FETCH_ALL_STUDENTS_SUCCESS: {
+            //Index students by student id. 
             return payload.reduce((acc, cur) => {
                 return { ...acc, [cur.id]: cur };
             }, {});
         }
 
-        case UPDATE_PRODUCT_SUCCESS: {
-            //Add/replace product to existing product index
+        case UPDATE_STUDENT_SUCCESS: {
+            //Add/replace student to existing student index
             return { ...state, [payload.id]: payload }
         }
 
-        case DELETE_PRODUCT_SUCCESS: {
+        case DELETE_STUDENT_SUCCESS: {
             const newState = { ...state };
             delete newState[payload.id];
             return newState;
@@ -31,7 +31,7 @@ export function productsReducer(state = initialState, action) {
 }
 
 const initialLoadingState = {
-    updateProduct: false,
+    updateStudent: false,
 }
 /**
  * This is obviously not a sustainable way to handle loading flags, but works for a quick demo. 
@@ -42,9 +42,9 @@ const initialLoadingState = {
 export function loadingFlagsReducer(state = initialLoadingState, action) {
     const { type, payload } = action;
     switch (type) {
-        case UPDATE_PRODUCT_REQUEST: return { ...state, updateProduct: true }
-        case UPDATE_PRODUCT_SUCCESS: return { ...state, updateProduct: false }
-        case UPDATE_PRODUCT_FAILURE: return { ...state, updateProduct: false }
+        case UPDATE_STUDENT_REQUEST: return { ...state, updateStudent: true }
+        case UPDATE_STUDENT_SUCCESS: return { ...state, updateStudent: false }
+        case UPDATE_STUDENT_FAILURE: return { ...state, updateStudent: false }
         default: return state;
 
     }
@@ -70,26 +70,10 @@ export function errorsReducer(state = initialErrorState, action) {
     return state;
 }
 
-const initialCurrencyRateState = {
-    rate: null,
-}
-
-export function currencyRateReducer(state = initialCurrencyRateState, action) {
-    const { type, payload } = action;
-    switch (type) {
-        case FETCH_CURRENCY_RATE_SUCCESS: return {
-            rate: payload
-        }
-
-        default: return state;
-    }
-}
-
 const rootReducer = combineReducers({
-    products: productsReducer,
+    students: studentsReducer,
     loadingFlags: loadingFlagsReducer,
     errors: errorsReducer,
-    currencyRate: currencyRateReducer,
 });
 
 

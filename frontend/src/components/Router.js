@@ -1,20 +1,20 @@
 import React from "react";
 import { BrowserRouter as ReactRouter, Route, Switch, Link } from "react-router-dom";
-import ProductTable from "./ProductTable/ProductTable";
+import StudentTable from "./StudentTable/StudentTable";
 
 import * as Routes from "../routes/routes";
-import UpdateProduct from "./ProductEditForm/UpdateProduct";
-import CreateProduct from "./ProductEditForm/CreateProduct";
+import UpdateStudent from "./StudentEditForm/UpdateStudent";
+import CreateStudent from "./StudentEditForm/CreateStudent";
 import { connect } from 'react-redux';
 
 function Router() {
     return (<ReactRouter>
         <Switch>
             {/* nb. Order is important because switch statement */}
-            <Route path={Routes.CREATE_PRODUCT} exact component={CreateProduct} />
-            <Route path={`${Routes.UPDATE_PRODUCT}/:id`} exact component={UpdateProduct} />
-            <Route path={Routes.PRODUCT_TABLE} exact component={ProductTable} />
-            <Route path={Routes.HOME} exact component={ProductTable} />
+            <Route path={Routes.CREATE_STUDENT} exact component={CreateStudent} />
+            <Route path={`${Routes.UPDATE_STUDENT}/:id`} exact component={UpdateStudent} />
+            <Route path={Routes.STUDENT_TABLE} exact component={StudentTable} />
+            <Route path={Routes.HOME} exact component={StudentTable} />
         </Switch>
     </ReactRouter>)
 }

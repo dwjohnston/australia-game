@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import CssBaseline from '@material-ui/core/CssBaseline';
-import { requestFetchAllProducts, requestFetchCurrencyRate } from '../redux/actions';
+import { requestFetchAllStudents } from '../redux/actions';
 import Router from './Router';
 import Header from "./layouts/Header";
 import ErrorPanel from './ErrorPanel/ErrorPanel';
@@ -11,8 +11,7 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    props.fetchAllProducts();
-    props.fetchCurrencyRate();
+    props.fetchAllStudents();
   }
 
   render() {
@@ -38,8 +37,7 @@ const mapStateToProps = (
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchAllProducts: () => dispatch(requestFetchAllProducts()),
-    fetchCurrencyRate: () => dispatch(requestFetchCurrencyRate()),
+    fetchAllStudents: () => dispatch(requestFetchAllStudents()),
   };
 };
 export default connect(
