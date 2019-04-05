@@ -1,38 +1,27 @@
 const express = require('express');
-const AWS = require("aws-sdk");
 const uuid = require('uuid/v1');
-var bodyParser = require('body-parser');
-
 const app = express();
-app.use(bodyParser.json());
+app.use(express.json());
 const port = 3001 || process.env.port;
 
-const config = require("./dynamodb/config");
-const dbApi = require("./dynamodb/interactWithTable");
+const dbApi = require("./dbApi/interactWithTable");
 
-const dynamodb = new AWS.DynamoDB(config.dynamoOptions);
-
+const Routes = require("./routes"); 
 
 
-app.get('/products', async (req, res) => {
+app.get(Routes.STUDENTS, async (req, res) => {
     try {
-        console.log("try");
         const result = await dbApi.getAllItems();
-
-        console.log(result);
         res.send(result);
     } catch (err) {
-        console.log(err);
-
         res.status(500).send(err);
     }
 });
 
-app.post('/products', async (req, res) => {
+app.post(Routes.STUDENTS, async (req, res) => {
     try {
-        const result = await dbApi.updateItem({
+        const result = await dbApi.addItem({            
             ...req.body,
-            id: uuid()
         });
         res.send(result);
     } catch (err) {
@@ -40,12 +29,12 @@ app.post('/products', async (req, res) => {
     }
 });
 
-app.patch('/products/:id', async (req, res) => {
+app.patch(`${Routes.STUDENTS}/:id`, async (req, res) => {
     try {
         const id = req.params.id;
         const result = await dbApi.updateItem({
             ...req.body,
-            id: uuid()
+            id, 
         });
         res.send(result);
     } catch (err) {
@@ -53,7 +42,7 @@ app.patch('/products/:id', async (req, res) => {
     }
 });
 
-app.delete('/products/:id', async (req, res) => {
+app.delete(`${Routes.STUDENTS}/:id`, async (req, res) => {
     try {
         const id = req.params.id;
         const result = await dbApi.deleteItem(id);
@@ -63,4 +52,4 @@ app.delete('/products/:id', async (req, res) => {
     }
 });
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+app.listen(port, () => console.log(`Acme University app listening on port ${port}!`))
