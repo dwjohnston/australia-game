@@ -2,6 +2,11 @@
 
 This is a template for an existing (non-SSI) business system. 
 
+
+(As it is, this is a student records system). 
+
+**TODO:** Changing from 'Student' to 'Whatever Else' is actually a bit painful. Need a better system for it, maybe? 
+
 The intention is to fork this as a template to quickly build PoC business systems, then work in integrating them with the SSI API layer. 
 
 This is forked from some sample code I wrote earlier: https://github.com/dwjohnston/product-management-SPA
@@ -12,7 +17,7 @@ This is forked from some sample code I wrote earlier: https://github.com/dwjohns
 
 - React/Redux/Redux-Saga/Material UI on the frontend
 - Express backend
-- ~~Dynamo DB (AWS) local database~~ Replace with GCP Datastore
+- GCP Datastore as database. 
 
 ## Functionality not included: 
 
