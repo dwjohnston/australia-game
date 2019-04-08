@@ -1,10 +1,9 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/styles';
 import { connect } from 'react-redux';
-import { selectErrors } from '../../redux/selectors';
-import { requestClearErrors } from '../../redux/actions';
 import { Fab, Typography } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
+import { selectAllErrors, requestClearAllErrors } from '../../redux/genericReduxCreators';
 
 const useStyles = makeStyles((theme) => {
     return {
@@ -29,7 +28,7 @@ const useStyles = makeStyles((theme) => {
 function ErrorPanel({ errors, clearErrors }) {
     const classes = useStyles();
 
-    return (errors && <div className={classes.root}>
+    return (errors.length > 0 && <div className={classes.root}>
         <Typography variant="p">    Uh oh, something went wrong. </Typography>
         <Fab
             color="secondary"
@@ -49,13 +48,13 @@ const mapStateToProps = (
     ownProps
 ) => {
     return {
-        errors: selectErrors(state),
+        errors: selectAllErrors(state),
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        clearErrors: () => dispatch(requestClearErrors())
+        clearErrors: () => dispatch(requestClearAllErrors())
     };
 };
 export default connect(

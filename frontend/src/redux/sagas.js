@@ -7,9 +7,9 @@ const reduxes = [
     updateStudentRedux,
     deleteStudentRedux
 ]
-
+console.log(reduxes);
 export default function* rootSaga() {
     yield all([
-        ...reduxes.map(v => v.sagaWatcher)
+        ...reduxes.map(v => v.sagaWatcher())
     ])
 }

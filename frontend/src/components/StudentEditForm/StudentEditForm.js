@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/styles';
-import { selectStudentByStudentId, createEmptyStudent, isUpdateLoading } from '../../redux/selectors';
-import { requestUpdateStudent } from '../../redux/actions';
+import {updateStudentRedux} from "../../redux/Student/student"; 
 import { Input, TextField } from '@material-ui/core';
 import Button from "../generic/Button";
 import { connect } from 'react-redux';
@@ -92,13 +91,13 @@ const mapStateToProps = (
     ownProps
 ) => {
     return {
-        updateLoading: isUpdateLoading(state)
+        updateLoading: updateStudentRedux.loadingSelector(state)
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        submitForm: (studentData) => dispatch(requestUpdateStudent(studentData))
+        submitForm: (studentData) => dispatch(updateStudentRedux.actionFn(studentData))
     };
 };
 export default connect(

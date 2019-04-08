@@ -5,10 +5,10 @@ import { connect } from 'react-redux';
 import ButtonGroup from '../generic/ButtonGroup';
 import { Link } from "react-router-dom";
 import * as Routes from "../../routes/routes";
-import { selectAllStudents } from '../../redux/selectors';
-import { requestDeleteStudent } from "../../redux/actions";
+import {deleteStudentRedux} from "../../redux/Student/student"; 
 import Button from "../generic/Button";
 import ControlPanel from './ControlPanel';
+import { selectAllStudents } from '../../redux/selectors';
 const useStyles = makeStyles({
     root: {
 
@@ -74,6 +74,7 @@ const mapStateToProps = (
     state,
     ownProps
 ) => {
+    console.log(state);
     return {
         students: selectAllStudents(state),
     };
@@ -81,7 +82,7 @@ const mapStateToProps = (
 
 const mapDispatchToProps = dispatch => {
     return {
-        deleteStudent: (student) => dispatch(requestDeleteStudent(student))
+        deleteStudent: (student) => dispatch(deleteStudentRedux.actionFn(student))
     };
 };
 export default connect(

@@ -60,7 +60,7 @@ export function createGenericRedux(baseName, options) {
      * Saga - Runs when the sagaWatcher tells it to. 
      * choose sagaFn first, then saga, then default saga (dispatch success immediately). 
      */
-    const saga = (options.sagaFn && options.sagaFn()) || options.saga || function* (action) {
+    const saga = (options.sagaFn && options.sagaFn(actions)) || options.saga || function* (action) {
         yield put({
             type: actions.SUCCESS, 
             payload: action.payload
@@ -72,6 +72,7 @@ export function createGenericRedux(baseName, options) {
      * default: takeEvery(actions.REQUEST)
      */
     const sagaWatcher = options.sagaWatcher ||  function * () {
+        console.log("watcher");
         yield takeEvery(actions.REQUEST, saga); 
     } ;
 
@@ -94,6 +95,7 @@ export function createGenericRedux(baseName, options) {
         if (action.type === actions.RESET) {
             return initialState; 
         }
+        return initialState; 
     }
 
     const reducerName = options.reducerName || baseName; 
@@ -106,6 +108,16 @@ export function createGenericRedux(baseName, options) {
         return state[reducerName]; 
     }
 
+    const loadingReducerName = options.loadingReducerName || 'loading'; 
+    const loadingSelector = options.loadingSelector || function (state) {
+        return state[loadingReducerName][actions.BASE_NAME]; 
+    }
+
+    const errorReducerName = options.errorReducerName || 'error';
+    const errorSelector = options.errorSelector || function(state) {
+        return state[errorReducerName][actions.BASE_NAME]
+    }
+
     return {
         actions, 
         actionFn, 
@@ -114,6 +126,8 @@ export function createGenericRedux(baseName, options) {
         reducer,
         reducerName,  
         dataSelector, 
+        loadingSelector, 
+        errorSelector, 
     }
 }
 
@@ -189,6 +203,20 @@ export function createLoadingFlagReducer(reduxes) {
 };
 
 /**
+ * This is a bit hacky for now. 
+ */
+const CLEAR_ALL_ERRORS_SUCCESS = "CLEAR_ALL_ERRORS_SUCCESS";  
+export function requestClearAllErrors() {
+    return {
+        type: CLEAR_ALL_ERRORS_SUCCESS
+    }; 
+}
+
+export function selectAllErrors(state) {
+    return Object.values(state.error).filter(v => !!v); 
+}
+
+/**
  * The error reducer
  * Only needs to be called once
  * 
@@ -203,6 +231,9 @@ export function createErrorReducer(reduxes) {
     return function (state = initialState, action) {
 
         const {type, payload}  = action; 
+        if (type === CLEAR_ALL_ERRORS_SUCCESS) {
+            return initialState
+        }
         const matches = /(.*)_(REQUEST|FAILURE)/.exec(type);
         if (!matches) return state;  
 

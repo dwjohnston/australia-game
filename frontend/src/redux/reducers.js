@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 import { createReducers, createLoadingFlagReducer, createErrorReducer } from "./genericReduxCreators";
-import { fetchAllStudentsRedux, updateStudentRedux, deleteStudentRedux } from "./Student/student";
+import { fetchAllStudentsRedux, updateStudentRedux, deleteStudentRedux, studentReducer } from "./Student/student";
 
 const reduxes = [
     fetchAllStudentsRedux, 
@@ -9,11 +9,12 @@ const reduxes = [
 ]
 const rootReducer = combineReducers({
 
-    ...createReducers(
-        reduxes
-    ),
+    // ...createReducers(
+    //     reduxes
+    // ),
     loading: createLoadingFlagReducer(reduxes), 
     error: createErrorReducer(reduxes), 
+    [fetchAllStudentsRedux.reducerName]: studentReducer, 
     
 });
 

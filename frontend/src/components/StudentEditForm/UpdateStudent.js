@@ -4,8 +4,8 @@ import { Typography } from '@material-ui/core';
 import StudentEditForm from './StudentEditForm';
 import { connect } from 'react-redux';
 import { selectStudentByStudentId } from '../../redux/selectors';
-import { requestUpdateStudent } from '../../redux/actions';
 import StudentEditFormLayout from '../layouts/StudentEditFormLayout';
+import {updateStudentRedux} from "../../redux/Student/student"; 
 
 const useStyles = makeStyles({
     root: {
@@ -32,7 +32,7 @@ const mapStateToProps = (
 
 const mapDispatchToProps = dispatch => {
     return {
-        submitForm: (studentData) => dispatch(requestUpdateStudent(studentData))
+        submitForm: (studentData) => dispatch(updateStudentRedux.actionFn(studentData))
     };
 };
 export default connect(
