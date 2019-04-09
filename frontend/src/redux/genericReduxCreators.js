@@ -244,3 +244,13 @@ export function createErrorReducer(reduxes) {
 
     }
 }
+
+export const  createAnyLoadingSelector = (actionBundles, loadingReducerName = "loading") => {
+    const requests = actionBundles.map(v => v.BASE_NAME); 
+    return (state) => {
+        return requests.reduce((acc, cur) => {
+            console.log(acc);
+            return !!state[loadingReducerName][cur] || acc; //Any true
+        }, false); 
+    }
+}

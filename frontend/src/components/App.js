@@ -5,7 +5,18 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Router from './Router';
 import Header from "./layouts/Header";
 import ErrorPanel from './ErrorPanel/ErrorPanel';
-import {fetchAllStudentsRedux} from "../redux/Student/student";
+import {fetchAllStudentsRedux, updateStudentRedux, deleteStudentRedux} from "../redux/Student/student";
+import { createAnyLoadingSelector } from '../redux/genericReduxCreators';
+import withStyles from 'react-jss'
+
+const styles =  {
+  root: props =>  {
+    return {
+     cursor: props.isLoading? 'wait' : 'default', 
+    }
+  }
+};
+
 class App extends Component {
 
   constructor(props) {
@@ -15,24 +26,38 @@ class App extends Component {
   }
 
   render() {
+
+    const {classes} = this.props; 
+    console.log(this.props);
     return (
       <CssBaseline>
-        <Header />
-        <ErrorPanel />
-        <Router />
+        <div className = {classes.root}>
+          hello world
+          <Header />
+          <ErrorPanel />
+          <Router />
+        </div>
       </CssBaseline>
     );
   }
 }
 
-
+const reduxes = [
+  fetchAllStudentsRedux, 
+  updateStudentRedux,
+  deleteStudentRedux
+]
+const loadingSelector = createAnyLoadingSelector(reduxes.map(v => v.actions))
 
 
 const mapStateToProps = (
   state,
   ownProps
 ) => {
-  return {};
+  console.log(state);
+  return {
+    isLoading: loadingSelector(state)
+  };
 };
 
 const mapDispatchToProps = dispatch => {
@@ -40,7 +65,8 @@ const mapDispatchToProps = dispatch => {
     fetchAllStudents: () => dispatch(fetchAllStudentsRedux.actionFn()),
   };
 };
+
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(App);
+)(withStyles(styles)(App));
