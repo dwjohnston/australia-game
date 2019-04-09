@@ -9,6 +9,7 @@ import {deleteStudentRedux} from "../../redux/Student/student";
 import Button from "../generic/Button";
 import ControlPanel from './ControlPanel';
 import { selectAllStudents } from '../../redux/selectors';
+import StandardPageLayout from '../layouts/StandardPageLayout';
 const useStyles = makeStyles({
     root: {
 
@@ -23,47 +24,49 @@ function StudentTable({ students, deleteStudent, currencyRate }) {
     const classes = useStyles();
 
     return (
-        <section>
-            <ControlPanel
-  
-            />
-            <Table className={classes.root}>
-                <TableHead>
-                    <TableRow>
-                        <TableCell>Student ID</TableCell>
-                        <TableCell>Student Name</TableCell>
-                        <TableCell>Grade</TableCell>
-                        <TableCell>Action</TableCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {students && students.map((student, i) => {
-                        return (<TableRow
-                            key={student.id}
-                        >
-                            <TableCell>{student.id}</TableCell>
-                            <TableCell>{student.name}</TableCell>
-                            <TableCell>{student.grade}</TableCell>
-                            <TableCell>
-                                <ButtonGroup>
-                                    <Button
-                                        component={Link}
-                                        to={`${Routes.UPDATE_STUDENT}/${student.id}`}
-                                        color="primary"
-                                    >Update</Button>
-                                    <Button
-                                        onClick={() => deleteStudent(student)}
-                                        color="secondary"
-                                    >Delete</Button>
-                                </ButtonGroup>
-                            </TableCell>
-                        </TableRow>)
-                    })}
-                </TableBody>
+        <StandardPageLayout>
+            <section>
+                <ControlPanel
+    
+                />
+                <Table className={classes.root}>
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>Student ID</TableCell>
+                            <TableCell>Student Name</TableCell>
+                            <TableCell>Grade</TableCell>
+                            <TableCell>Action</TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {students && students.map((student, i) => {
+                            return (<TableRow
+                                key={student.id}
+                            >
+                                <TableCell>{student.id}</TableCell>
+                                <TableCell>{student.name}</TableCell>
+                                <TableCell>{student.grade}</TableCell>
+                                <TableCell>
+                                    <ButtonGroup>
+                                        <Button
+                                            component={Link}
+                                            to={`${Routes.UPDATE_STUDENT}/${student.id}`}
+                                            color="primary"
+                                        >Update</Button>
+                                        <Button
+                                            onClick={() => deleteStudent(student)}
+                                            color="secondary"
+                                        >Delete</Button>
+                                    </ButtonGroup>
+                                </TableCell>
+                            </TableRow>)
+                        })}
+                    </TableBody>
 
 
-            </Table>
-        </section>);
+                </Table>
+            </section>
+        </StandardPageLayout>);
 
 }
 

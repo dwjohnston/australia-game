@@ -32,7 +32,6 @@ class App extends Component {
     return (
       <CssBaseline>
         <div className = {classes.root}>
-          hello world
           <Header />
           <ErrorPanel />
           <Router />

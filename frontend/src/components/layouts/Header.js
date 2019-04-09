@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/styles';
 import { Typography } from '@material-ui/core';
+import NavBar from '../flowLogic/NavBar';
 const useStyles = makeStyles({
     root: {
 
@@ -15,5 +16,6 @@ export default function StudentEditFormLayout({ children }) {
             align="center"
             gutterBottom
         >Acme Student Mangement Tool</Typography>
+        
     </header>;
 }

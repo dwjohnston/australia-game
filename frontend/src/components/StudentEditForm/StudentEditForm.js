@@ -11,8 +11,6 @@ const useStyles = makeStyles({
         display: "flex",
         flexFlow: "column nowrap",
         alignItems: "stretch",
-
-        maxWidth: 600,
     },
 
     field: {
