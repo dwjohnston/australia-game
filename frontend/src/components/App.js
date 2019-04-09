@@ -7,7 +7,7 @@ import Header from "./layouts/Header";
 import ErrorPanel from './ErrorPanel/ErrorPanel';
 import {fetchAllStudentsRedux, updateStudentRedux, deleteStudentRedux} from "../redux/Student/student";
 import { createAnyLoadingSelector } from '../redux/genericReduxCreators';
-import withStyles from 'react-jss'
+import { withStyles } from '@material-ui/styles';
 
 const styles =  {
   root: props =>  {
