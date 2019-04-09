@@ -1,11 +1,13 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/styles';
 import { Typography } from '@material-ui/core';
-import NavBar from '../flowLogic/NavBar';
-const useStyles = makeStyles({
-    root: {
+const useStyles = makeStyles((theme) =>{
 
-    },
+    return  ({
+        root: {
+            padding: theme.spacing.unit* 4
+        },
+    })
 });
 
 export default function StudentEditFormLayout({ children }) {

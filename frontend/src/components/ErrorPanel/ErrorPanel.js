@@ -6,6 +6,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import { selectAllErrors, requestClearAllErrors } from '../../redux/genericReduxCreators';
 
 const useStyles = makeStyles((theme) => {
+    console.log(theme);
     return {
         root: {
             padding: "1em",
