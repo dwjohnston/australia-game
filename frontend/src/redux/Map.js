@@ -5,12 +5,22 @@ import { all, takeLeading, put, call } from "redux-saga/effects";
 export const reducerName = "map"; 
 
 const SIZE = 20; 
+
+const mapValueTypes = {
+    EMPTY: "orange", 
+    VOID: "grey", 
+    ONE: "red", 
+    TWO: "green", 
+    THREE: 'blue', 
+    FOUR: 'purple',
+}
+
 const initMap = new Array(SIZE).fill(true).map((v,i) => {
     return new Array(SIZE).fill(true).map((v,j) => {
         return {
             x: i, 
             y: j, 
-            color: "orange"   // need to init four diff tribes
+            color: mapValueTypes.EMPTY,  
         }
     });     
 }); 
