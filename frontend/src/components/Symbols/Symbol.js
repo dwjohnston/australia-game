@@ -20,6 +20,7 @@ const useStyles = makeStyles(theme => ({
         alignItems: "center", 
         justifyContent: "space-around", 
         margin: 20, 
+        padding: 20, 
     },
 
     image: {
@@ -43,7 +44,7 @@ function Symbol({ symbolData, id }) {
 
             <img src = {imageMap[symbolData]} className = {classes.image}/>
 
-           <Typography variant="body2"> {JSON.stringify(id)}</Typography>
+           <Typography variant="body2"> {id}</Typography>
     </Card>
 ;
 }
