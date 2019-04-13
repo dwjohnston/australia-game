@@ -3,17 +3,18 @@ import { createReducers, createLoadingFlagReducer, createErrorReducer } from "./
 import { fetchAllStudentsRedux, updateStudentRedux, deleteStudentRedux, studentReducer } from "./Student/student";
 import { mapEffectReducer } from "./Map";
 import { keysRedux } from "./Keys";
-import { symbolsRedux } from "./Symbols";
+import { symbolsRedux, symbolsReducer } from "./Symbols";
 
 const reduxes = [
     keysRedux, 
-    symbolsRedux
+    
 ]
 const rootReducer = combineReducers({
 
     ...createReducers(
         reduxes
     ),
+    symbols: symbolsReducer, 
     map: mapEffectReducer, 
     loading: createLoadingFlagReducer(reduxes), 
     error: createErrorReducer(reduxes), 

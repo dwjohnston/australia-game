@@ -23,8 +23,6 @@ function MapSquare({mapItem, isCursor}) {
         border: isCursor? "solid 2px red" : "solid 1px black", 
     }}>
 
-        {mapItem.x} , {mapItem.y}
-
      </div>
 ;
 }

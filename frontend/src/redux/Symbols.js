@@ -1,6 +1,6 @@
 import {createGenericRedux} from "./genericReduxCreators"; 
 import { all, takeLeading, put, call } from "redux-saga/effects";
-import { reverseLookup } from "./Keys";
+import { reverseLookup, RANDOMIZE_SYMBOLS_ACTION } from "./Keys";
 
 
 export const reducerName = "symbols"; 
@@ -33,6 +33,16 @@ const randomizeSymbols = () => ({
     W: getRandomSymbol(), 
     E: getRandomSymbol(), 
 }); 
+
+export const symbolsReducer = (state = randomizeSymbols(), action) => {
+
+    if (action.type === RANDOMIZE_SYMBOLS_ACTION) {
+        return randomizeSymbols(); 
+    }
+
+    return state; 
+}
+
 export const symbolsRedux = createGenericRedux("INIT_SYMBOLS", {
     reducerName: reducerName, 
     initialState: randomizeSymbols(), 

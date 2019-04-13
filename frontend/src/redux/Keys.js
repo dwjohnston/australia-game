@@ -68,22 +68,22 @@ const symbolMatrix = {
 
     }, 
     [mapValueTypes.TWO] : {
-        [symbolTypes.A] : effects.GROW_DOWN, 
-        [symbolTypes.B] : effects.GROW_RIGHT, 
-        [symbolTypes.C] : effects.GROW_UP, 
-        [symbolTypes.D] : effects.GROW_LEFT, 
+        [symbolTypes.B] : effects.GROW_DOWN, 
+        [symbolTypes.C] : effects.GROW_RIGHT, 
+        [symbolTypes.D] : effects.GROW_UP, 
+        [symbolTypes.A] : effects.GROW_LEFT, 
     }, 
     [mapValueTypes.THREE] : {
-        [symbolTypes.A] : effects.GROW_DOWN, 
-        [symbolTypes.B] : effects.GROW_RIGHT, 
-        [symbolTypes.C] : effects.GROW_UP, 
-        [symbolTypes.D] : effects.GROW_LEFT, 
+        [symbolTypes.C] : effects.GROW_DOWN, 
+        [symbolTypes.D] : effects.GROW_RIGHT, 
+        [symbolTypes.B] : effects.GROW_UP, 
+        [symbolTypes.A] : effects.GROW_LEFT, 
     }, 
     [mapValueTypes.FOUR] : {
-        [symbolTypes.A] : effects.GROW_DOWN, 
-        [symbolTypes.B] : effects.GROW_RIGHT, 
-        [symbolTypes.C] : effects.GROW_UP, 
-        [symbolTypes.D] : effects.GROW_LEFT, 
+        [symbolTypes.D] : effects.GROW_DOWN, 
+        [symbolTypes.A] : effects.GROW_RIGHT, 
+        [symbolTypes.B] : effects.GROW_UP, 
+        [symbolTypes.C] : effects.GROW_LEFT, 
     }, 
 }
 
@@ -104,6 +104,7 @@ const handleSymbolAction = (mapItem, symbolItem) =>  {
 }
 
 export const MAP_EFFECT_ACTION = "MAP_EFFECT_ACTION"; 
+export const RANDOMIZE_SYMBOLS_ACTION = "RANDOMIZE_SYMBOLS_ACTION"; 
 
 const keyPressSagaFn = (actions) => {
     return function* (action) {
@@ -134,6 +135,9 @@ const keyPressSagaFn = (actions) => {
         yield put({
             type: MAP_EFFECT_ACTION, 
             payload: effect, 
+        })
+
+        yield put ({type: RANDOMIZE_SYMBOLS_ACTION
         })
         console.log(state);
         console.log("action press"); 
