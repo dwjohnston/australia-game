@@ -1,9 +1,7 @@
 import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/styles';
 import { connect } from 'react-redux';
-import { mapRedux } from '../redux/Map';
-import MapSquare from './MapSquare';
-import { keysRedux } from '../redux/Keys';
+
 import Symbol from './Symbol';
 
 const useStyles = makeStyles(theme => ({
