@@ -1,18 +1,20 @@
 import { combineReducers } from "redux";
 import { createReducers, createLoadingFlagReducer, createErrorReducer } from "./genericReduxCreators";
 import { fetchAllStudentsRedux, updateStudentRedux, deleteStudentRedux, studentReducer } from "./Student/student";
-import { mapRedux } from "./Map";
+import { mapEffectReducer } from "./Map";
 import { keysRedux } from "./Keys";
+import { symbolsRedux } from "./Symbols";
 
 const reduxes = [
-    mapRedux,
-    keysRedux
+    keysRedux, 
+    symbolsRedux
 ]
 const rootReducer = combineReducers({
 
     ...createReducers(
         reduxes
     ),
+    map: mapEffectReducer, 
     loading: createLoadingFlagReducer(reduxes), 
     error: createErrorReducer(reduxes), 
     

@@ -11,6 +11,7 @@ const useStyles = makeStyles(theme => ({
         height: SIZE, 
         border: "solid 1px black", 
         margin: 2, 
+        fontSize: 8, 
     },
 }));
 
@@ -21,6 +22,8 @@ function MapSquare({mapItem, isCursor}) {
         backgroundColor: color, 
         border: isCursor? "solid 2px red" : "solid 1px black", 
     }}>
+
+        {mapItem.x} , {mapItem.y}
 
      </div>
 ;

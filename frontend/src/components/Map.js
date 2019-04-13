@@ -7,11 +7,12 @@ import { keysRedux } from '../redux/Keys';
 
 const useStyles = makeStyles(theme => ({
     root: {
-
+        display: "flex", 
+        flexFlow: "row nowrap", 
     },
     mapRow: {
         display :"flex", 
-        flexFlow: "row nowrap", 
+        flexFlow: "column nowrap", 
     }
 }));
 
@@ -21,13 +22,16 @@ function Map({ map, keyPress, }) {
     const classes = useStyles();
 
     useEffect(()=> {
-        document.addEventListener("keydown", (event) => {
+
+        const el =  (event) => {
             console.log(event.keyCode);
             keyPress(event.keyCode); 
-        }, false);
+        }; 
+        document.addEventListener("keydown",el , false);
 
         return () => {
             //Unbind event listeners.
+            document.removeEventListener("keydown", el); 
         }
     })
     return <div className= {classes.root}>

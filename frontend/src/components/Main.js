@@ -13,11 +13,8 @@ const useStyles = makeStyles(theme => ({
 function Main({  }) {
 
     return <div>
-
-        hello world
-
-        <Map/>
         <SymbolsPanel/>
+        <Map/>
     </div>
 ;
 }

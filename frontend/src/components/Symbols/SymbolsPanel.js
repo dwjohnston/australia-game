@@ -6,12 +6,11 @@ import Symbol from './Symbol';
 
 const useStyles = makeStyles(theme => ({
     root: {
-
-    },
-    mapRow: {
-        display :"flex", 
+        display: "flex", 
         flexFlow: "row nowrap", 
-    }
+        justifyContent: "center", 
+    },
+
 }));
 
 
