@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Router from './Router';
+import Main from "./Main";
 import Header from "./layouts/Header";
 import ErrorPanel from './ErrorPanel/ErrorPanel';
 import {fetchAllStudentsRedux, updateStudentRedux, deleteStudentRedux} from "../redux/Student/student";
@@ -33,7 +33,7 @@ class App extends Component {
         <div className = {classes.root}>
           <Header />
           <ErrorPanel />
-          <Router />
+          <Main />
         </div>
       </CssBaseline>
     );
