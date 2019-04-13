@@ -1,11 +1,10 @@
 import { all, takeLeading, put, call } from "redux-saga/effects";
 import { fetchAllStudentsRedux, deleteStudentRedux, updateStudentRedux } from "./Student/student";
+import { keysRedux } from "./Keys";
 
 
 const reduxes = [
-    fetchAllStudentsRedux, 
-    updateStudentRedux,
-    deleteStudentRedux
+    keysRedux
 ]
 console.log(reduxes);
 export default function* rootSaga() {

@@ -17,7 +17,7 @@ export default function StudentEditFormLayout({ children }) {
             variant="h1"
             align="center"
             gutterBottom
-        >Acme Student Mangement Tool</Typography>
+        >Grid Tribes</Typography>
         
     </header>;
 }

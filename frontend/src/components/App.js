@@ -22,7 +22,6 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    props.fetchAllStudents();
   }
 
   render() {
@@ -42,11 +41,8 @@ class App extends Component {
 }
 
 const reduxes = [
-  fetchAllStudentsRedux, 
-  updateStudentRedux,
-  deleteStudentRedux
+
 ]
-const loadingSelector = createAnyLoadingSelector(reduxes.map(v => v.actions))
 
 
 const mapStateToProps = (
@@ -55,13 +51,11 @@ const mapStateToProps = (
 ) => {
   console.log(state);
   return {
-    isLoading: loadingSelector(state)
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchAllStudents: () => dispatch(fetchAllStudentsRedux.actionFn()),
   };
 };
 
