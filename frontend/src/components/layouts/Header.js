@@ -17,7 +17,15 @@ export default function StudentEditFormLayout({ children }) {
             variant="h1"
             align="center"
             gutterBottom
-        >Grid Tribes</Typography>
+        >Connect The People</Typography>
+
+        <Typography variant = "body1" align ="center" gutterBottom> 
+            Use arrow keys to move around, and Q, W, E to make an action. 
+        </Typography>
+
+        <Typography variant = "body1" align ="center" gutterBottom> 
+            Each tribe reponds to actions differently!
+        </Typography>
         
     </header>;
 }

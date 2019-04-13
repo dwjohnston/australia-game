@@ -13,18 +13,19 @@ import d from "../../images/d.png";
 
 const useStyles = makeStyles(theme => ({
     root: {
-        width: 100, 
-        height: 100,
+ 
         display: "flex", 
         flexFlow: "column nowrap", 
         alignItems: "center", 
         justifyContent: "space-around", 
         margin: 20, 
-        padding: 20, 
+        padding: 5, 
     },
 
     image: {
         objectFit: "scale-down", 
+        width: 100, 
+        height: 100,
     }
 
 }));
